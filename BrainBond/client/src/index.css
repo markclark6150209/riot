@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 355 100% 64%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 0 0% 0%;
+  --chart-2: 0 0% 0%;
+  --chart-3: 0 0% 0%;
+  --chart-4: 0 0% 0%;
+  --chart-5: 0 0% 0%;
+  --sidebar-background: 0 0% 0%;
+  --sidebar-foreground: 0 0% 0%;
+  --sidebar-primary: 0 0% 0%;
+  --sidebar-primary-foreground: 0 0% 0%;
+  --sidebar-accent: 0 0% 0%;
+  --sidebar-accent-foreground: 0 0% 0%;
+  --sidebar-border: 0 0% 0%;
+  --sidebar-ring: 0 0% 0%;
+  
+  /* Valorant Colors */
+  --valorant-red: 355 100% 64%;
+  --valorant-blue: 210 41% 10%;
+  --valorant-dark: 204 21% 16%;
+  --valorant-light: 39 33% 91%;
+  --valorant-success: 150 100% 65%;
+  --valorant-error: 0 100% 65%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 355 100% 64%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    font-family: 'Barlow Condensed', sans-serif;
+    background-image: radial-gradient(circle at center, hsl(204 21% 16%) 0%, hsl(210 41% 10%) 100%);
+    background-attachment: fixed;
+  }
+  
+  /* Hexagon Pattern Overlay */
+  .hexagon-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23ff4655' fill-opacity='0.05' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .valorant-button {
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  }
+  
+  .valorant-card {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 100%, 0% 100%);
+  }
+  
+  .valorant-input {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 5% 100%);
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 15px rgba(255, 70, 85, 0.7);
+  }
+  
+  .spinner-wheel {
+    background-image: conic-gradient(
+      #FF4655 0deg 72deg,
+      #1F2731 72deg 144deg,
+      #FF4655 144deg 216deg,
+      #1F2731 216deg 288deg,
+      #FF4655 288deg 360deg
+    );
+    transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  }
+  
+  @keyframes spin-slow {
+    to {
+      transform: rotate(var(--rotation-value));
+    }
+  }
+  
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes slide-up {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out forwards;
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 3s ease-out forwards;
+  }
+}
